@@ -12,13 +12,13 @@ Description: # ModelZoo
         
         Models : 
         
-            * UNet and UNet++
+            UNet and UNet++
         
-            * PointNet
+            PointNet
         
-            * StackGAN
+            StackGAN
         
-            * PSPNet 
+            PSPNet 
         
         ## Installation
         
