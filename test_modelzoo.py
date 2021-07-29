@@ -1,4 +1,4 @@
-from modelzoo import models
+from modelzoo_iitm import models
 
 def test_modelzoo_no_params():
     assert models() == "No Models loaded"

@@ -4,16 +4,16 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='modelzoo',
+    name='modelzoo_iitm',
     version = '0.0.1',
     description = 'Model Zoo by IIT Madras',
-    py_modules = ["modelzoo"],
+    py_modules = ["modelzoo_iitm"],
     package_dir = {'': 'src'},
     classifiers = [
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
-        "License :: MIT Approved",
+        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
     install_requires = [
