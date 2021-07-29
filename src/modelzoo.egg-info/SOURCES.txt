@@ -1,0 +1,8 @@
+README.md
+setup.py
+src/modelzoo.py
+src/modelzoo.egg-info/PKG-INFO
+src/modelzoo.egg-info/SOURCES.txt
+src/modelzoo.egg-info/dependency_links.txt
+src/modelzoo.egg-info/requires.txt
+src/modelzoo.egg-info/top_level.txt
