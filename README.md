@@ -4,8 +4,11 @@ This is the ModelZoo created by the students of IIT Madras.
 
 Models : 
     * UNet and UNet++
+
     * PointNet
+
     * StackGAN
+    
     * PSPNet 
 
 ## Installation
