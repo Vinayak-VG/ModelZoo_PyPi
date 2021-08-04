@@ -14,10 +14,11 @@ Models :
       * PointNet
   * GAN
     * StackGAN
+    * Inpainting
 
 * Natural Language Processing
   * CharCNN
-  * KimCNN   
+  * Adaptive Attention for Image Captioning
 
 ## Installation
 

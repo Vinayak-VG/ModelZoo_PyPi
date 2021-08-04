@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: modelzoo-iitm
-Version: 0.0.2
+Version: 0.0.7
 Summary: Model Zoo by IIT Madras
 Home-page: https://github.com/Vinayak-VG/ModelZoo_PyPi
 Author: Vinayak-VG
@@ -8,23 +8,31 @@ Author-email: vinayakguptapokal@gmail.com
 License: UNKNOWN
 Description: # ModelZoo
         
-        This is the ModelZoo created by the students of IIT Madras.
+        This is the ModelZoo created by the Analytics Club, IIT Madras
         
         Models : 
         
-            UNet and UNet++
+        * Computer Vision
+          * Segmentation
+            * 2D Segmentation
+              * UNet 
+              * UNet++
+              * PSPNet
+            * 3D Segmentation
+              * PointNet
+          * GAN
+            * StackGAN
+            * Inpainting
         
-            PointNet
-        
-            StackGAN
-        
-            PSPNet 
+        * Natural Language Processing
+          * CharCNN
+          * Adaptive Attention for Image Captioning
         
         ## Installation
         
         Run the following to install:
         
-        **pip install modelzoo**
+        **pip install modelzoo-iitm**
         
         ## Developing Model Zoo
         
