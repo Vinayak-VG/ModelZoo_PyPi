@@ -14,9 +14,10 @@ from CharCNN import *
 from PSPNet import *
 from Inpainting import *
 from AdapAttnIC import *
+import requests
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
+# model_weights = {UNet : }
 def models(name = None):
     if name is None:
         return "No Models loaded"
@@ -26,8 +27,9 @@ def models(name = None):
 def UNet(num_channels = 1, pretrained = False):        # num_channels = 1 if grayscale image else num_channels = 3 if color image
     if pretrained == True:
         model = U_Net(num_channels)
-        url = "https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/U-Net_Image_Seg_Norm.pt"
-        model.load_state_dict(model_zoo.load_url(url))
+        url = 'https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/U-Net_Image_Seg_Norm.pt'
+        checkpoint = model_zoo.load_url(url, map_location=device)
+        model.load_state_dict(checkpoint['model_state_dict'])
         print("Pre-Trained Model Loaded Succesfully")
     else:
         model = U_Net(num_channels)
@@ -37,8 +39,9 @@ def UNet(num_channels = 1, pretrained = False):        # num_channels = 1 if gra
 def UNetPP(num_channels = 1, pretrained = False):      # num_channels = 1 if grayscale image else num_channels = 3 if color image
     if pretrained == True:
         model = UNet_PP(num_channels, DenseBlock, BasicDownBlock, BasicUpBlock)
-        url = "https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/U-Net++.pt"
-        model.load_state_dict(model_zoo.load_url(url))
+        url = "https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/U-Net++.pt"    
+        checkpoint = model_zoo.load_url(url, map_location=device)
+        model.load_state_dict(checkpoint['model_state_dict'])
         print("Pre-Trained Model Loaded Succesfully")
     else:    
         model = UNet_PP(num_channels, DenseBlock, BasicDownBlock, BasicUpBlock)
@@ -49,7 +52,8 @@ def PointNet(pretrained = False):
     if pretrained == True:
         model = Point_Net(T_Net)
         url = "https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/PointNet_Best.pt"
-        model.load_state_dict(model_zoo.load_url(url))
+        checkpoint = model_zoo.load_url(url, map_location=device)
+        model.load_state_dict(checkpoint['model_state_dict'])
         print("Pre-Trained Model Loaded Succesfully")
     else:
         model = Point_Net(T_Net)
@@ -78,25 +82,29 @@ def StackGAN(name = "None", pretrained = False):
         elif name == 'StageI_Gen':
             model = StageI_GAN_Gen(Conditioning_Augmentation_StageI)
             url = "https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/StageI_Gen_GAN_GPT2-3.pt"
-            model.load_state_dict(model_zoo.load_url(url))
+            checkpoint = model_zoo.load_url(url, map_location=device)
+            model.load_state_dict(checkpoint['model_state_dict'])
             print("Pre-Trained Model Loaded Succesfully")
             return model
         elif name == 'StageI_Dis':
             model = StageI_GAN_Dis(DownSample1)
             url = "https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/StageI_Dis_GAN_GPT2.pt"
-            model.load_state_dict(model_zoo.load_url(url))
+            checkpoint = model_zoo.load_url(url, map_location=device)
+            model.load_state_dict(checkpoint['model_state_dict'])
             print("Pre-Trained Model Loaded Succesfully")
             return model
         elif name == 'StageII_Gen':
             model = StageII_GAN_Gen(DownSample2, ResidualBlock, UpSampling2, Conditioning_Augmentation_StageII)
             url = "https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/StageII_Gen_GAN_GPT2.pt"
-            model.load_state_dict(model_zoo.load_url(url))
+            checkpoint = model_zoo.load_url(url, map_location=device)
+            model.load_state_dict(checkpoint['model_state_dict'])
             print("Pre-Trained Model Loaded Succesfully")
             return model
         elif name == 'StageII_Dis':
             model = StageII_GAN_Dis(DownSample3)
             url = "https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/StageII_Dis_GAN_GPT2.pt"
-            model.load_state_dict(model_zoo.load_url(url))
+            checkpoint = model_zoo.load_url(url, map_location=device)
+            model.load_state_dict(checkpoint['model_state_dict'])
             print("Pre-Trained Model Loaded Succesfully")
             return model
     else:
