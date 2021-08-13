@@ -14,10 +14,8 @@ from CharCNN import *
 from PSPNet import *
 from Inpainting import *
 from AdapAttnIC import *
-import requests
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-# model_weights = {UNet : }
 def models(name = None):
     if name is None:
         return "No Models loaded"
