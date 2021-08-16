@@ -14,10 +14,8 @@ from CharCNN import *
 from PSPNet import *
 from Inpainting import *
 from AdapAttnIC import *
-import requests
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-# model_weights = {UNet : }
 def models(name = None):
     if name is None:
         return "No Models loaded"
@@ -36,7 +34,7 @@ def UNet(num_channels = 1, pretrained = False):        # num_channels = 1 if gra
         print("Model Loaded Succesfully") 
     return model
 
-def UNetPP(num_channels = 1, pretrained = False):      # num_channels = 1 if grayscale image else num_channels = 3 if color image
+def UNetPP(num_channels = 1, pretrained = False):      # num_channels = 1 if grayscale image else num_channels = 3 if color image   
     if pretrained == True:
         model = UNet_PP(num_channels, DenseBlock, BasicDownBlock, BasicUpBlock)
         url = "https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/U-Net++.pt"    

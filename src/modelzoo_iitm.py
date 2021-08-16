@@ -34,7 +34,7 @@ def UNet(num_channels = 1, pretrained = False):        # num_channels = 1 if gra
         print("Model Loaded Succesfully") 
     return model
 
-def UNetPP(num_channels = 1, pretrained = False):      # num_channels = 1 if grayscale image else num_channels = 3 if color image
+def UNetPP(num_channels = 1, pretrained = False):      # num_channels = 1 if grayscale image else num_channels = 3 if color image   
     if pretrained == True:
         model = UNet_PP(num_channels, DenseBlock, BasicDownBlock, BasicUpBlock)
         url = "https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/U-Net++.pt"    
