@@ -5,9 +5,9 @@ with open("README.md", "r") as fh:
 
 setup(
     name='modelzoo_iitm',
-    version = '0.0.12',
+    version = '0.0.25',
     description = 'Model Zoo by IIT Madras',
-    py_modules = ["modelzoo_iitm", "UNet", "UNetPP", "StackGAN", "PointNet", "PSPNet", "Inpainting", "AdapAttnIC", "CharCNN", "resnet"],
+    py_modules = ["modelzoo_iitm", "UNet_zoo.model", "UNet_zoo.train", "UNetPP", "StackGAN", "PointNet", "PSPNet", "Inpainting", "AdapAttnIC", "CharCNN", "resnet"],
     package_dir = {'': 'src'},
     classifiers = [
         "Programming Language :: Python :: 3",

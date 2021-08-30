@@ -12,7 +12,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 ''' UNet Model'''
 
 class U_Net(nn.Module):
-    def __init__(self, num_channel):
+    def __init__(self, num_channel = 1):
         super(U_Net, self).__init__()
         self.conv1 = nn.Conv2d(in_channels = num_channel, out_channels = 64, kernel_size = 3, stride = 1, padding = 1)
         nn.init.normal_(self.conv1.weight, mean=0.0, std=np.sqrt(2/(3*3*64)))

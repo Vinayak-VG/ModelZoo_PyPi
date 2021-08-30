@@ -6,10 +6,11 @@ src/Inpainting.py
 src/PSPNet.py
 src/PointNet.py
 src/StackGAN.py
-src/UNet.py
 src/UNetPP.py
 src/modelzoo_iitm.py
 src/resnet.py
+src/UNet_zoo/model.py
+src/UNet_zoo/train.py
 src/modelzoo_iitm.egg-info/PKG-INFO
 src/modelzoo_iitm.egg-info/SOURCES.txt
 src/modelzoo_iitm.egg-info/dependency_links.txt

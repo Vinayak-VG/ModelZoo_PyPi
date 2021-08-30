@@ -6,7 +6,9 @@ import torch.nn.functional as F
 import math
 from torch.autograd import Variable
 import torch.utils.model_zoo as model_zoo
-from UNet import *
+# from UNet.model import *
+from UNet_zoo.model import *
+from UNet_zoo.train import *
 from UNetPP import *
 from PointNet import *
 from StackGAN import *
@@ -22,17 +24,33 @@ def models(name = None):
     else:
         return f"{name} model loaded successfully"
 
-def UNet(num_channels = 1, pretrained = False):        # num_channels = 1 if grayscale image else num_channels = 3 if color image
-    if pretrained == True:
-        model = U_Net(num_channels)
-        url = 'https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/U-Net_Image_Seg_Norm.pt'
-        checkpoint = model_zoo.load_url(url, map_location=device)
-        model.load_state_dict(checkpoint['model_state_dict'])
-        print("Pre-Trained Model Loaded Succesfully")
-    else:
-        model = U_Net(num_channels)
-        print("Model Loaded Succesfully") 
-    return model
+class UNet:
+    def model(num_channels = 1, pretrained = False):
+        if pretrained == True:
+            model = U_Net(num_channels)
+            url = 'https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/U-Net_Image_Seg_Norm.pt'
+            checkpoint = model_zoo.load_url(url, map_location=device)
+            model.load_state_dict(checkpoint['model_state_dict'])
+            print("Pre-Trained Model Loaded Succesfully")
+        else:
+            model = U_Net(num_channels)
+            print("Model Loaded Succesfully") 
+        return model
+    
+    def train(model, train_dataloader, optimizer, loss, device):
+        train_UNet(model, train_dataloader, optimizer, loss, device)
+
+# def UNet(num_channels = 1, pretrained = False):        # num_channels = 1 if grayscale image else num_channels = 3 if color image
+#     if pretrained == True:
+#         model = U_Net(num_channels)
+#         url = 'https://github.com/Vinayak-VG/ModelZoo_PyPi/releases/download/Weights/U-Net_Image_Seg_Norm.pt'
+#         checkpoint = model_zoo.load_url(url, map_location=device)
+#         model.load_state_dict(checkpoint['model_state_dict'])
+#         print("Pre-Trained Model Loaded Succesfully")
+#     else:
+#         model = U_Net(num_channels)
+#         print("Model Loaded Succesfully") 
+#     return model
 
 def UNetPP(num_channels = 1, pretrained = False):      # num_channels = 1 if grayscale image else num_channels = 3 if color image   
     if pretrained == True:

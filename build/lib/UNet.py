@@ -1,20 +1,12 @@
 import torch
 import torch.nn as nn
-import torchvision
-import numpy as np
 import torch.nn.functional as F
-import math
-from torch.autograd import Variable
-import torch.utils.model_zoo as model_zoo
-
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-''' UNet Model'''
+import numpy as np
 
 class U_Net(nn.Module):
-    def __init__(self, num_channel):
+    def __init__(self):
         super(U_Net, self).__init__()
-        self.conv1 = nn.Conv2d(in_channels = num_channel, out_channels = 64, kernel_size = 3, stride = 1, padding = 1)
+        self.conv1 = nn.Conv2d(in_channels = 1, out_channels = 64, kernel_size = 3, stride = 1, padding = 1)
         nn.init.normal_(self.conv1.weight, mean=0.0, std=np.sqrt(2/(3*3*64)))
         self.conv2 = nn.Conv2d(in_channels = 64, out_channels = 64, kernel_size = 3, stride = 1, padding = 1)
         nn.init.normal_(self.conv2.weight, mean=0.0, std=np.sqrt(2/(3*3*64)))
@@ -62,7 +54,7 @@ class U_Net(nn.Module):
         nn.init.normal_(self.conv17.weight, mean=0.0, std=np.sqrt(2/(3*3*64)))
         self.conv18 = nn.Conv2d(in_channels = 64, out_channels = 64, kernel_size = 3, stride = 1, padding = 1)
         nn.init.normal_(self.conv18.weight, mean=0.0, std=np.sqrt(2/(3*3*64)))
-        self.conv19 = nn.Conv2d(in_channels = 64, out_channels = num_channel, kernel_size = 1, stride = 1, padding = 0)
+        self.conv19 = nn.Conv2d(in_channels = 64, out_channels = 1, kernel_size = 1, stride = 1, padding = 0)
         nn.init.normal_(self.conv19.weight, mean=0.0, std=np.sqrt(2/(1*1*1)))
         self.relu = nn.ReLU()
         self.gn1 = nn.GroupNorm(16, 64)
