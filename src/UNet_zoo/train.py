@@ -20,11 +20,6 @@ from PIL import Image
 from UNet_zoo.model import *
 from tqdm import trange
 
-batch_size = 1
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-
-
 epoch_train_losses = []              # Defining an empty list to store the epoch losses
 epoch_val_losses = []             
 accu_train_epoch = []                # Defining an empty list to store the accuracy per epoch
@@ -84,11 +79,11 @@ def train_UNet(model, dataset, optimizer, criterion, device):
       optimizer.zero_grad()
       train_loss.backward()
       optimizer.step()
-    epoch_train_losses.append(sum(train_loss_batch)/360)
-    accu_train_epoch.append(sum(accu_train_batch)/360)
-    print(f"Train Epoch Loss: {sum(train_loss_batch)/360}   Train Epoch Accuracy: {sum(accu_train_batch)/360}")
+    epoch_train_losses.append(sum(train_loss_batch)/len(dataset))
+    accu_train_epoch.append(sum(accu_train_batch)/len(dataset))
+    print(f"Train Epoch Loss: {sum(train_loss_batch)/len(dataset)}   Train Epoch Accuracy: {sum(accu_train_batch)/len(dataset)}")
 
-def eval(model, dataset, criterion, device):
+def eval_UNet(model, dataset, criterion, device):
 
     val_loss_batch = []
     accu_val_batch = []
@@ -107,12 +102,6 @@ def eval(model, dataset, criterion, device):
         torch.round(output)
         acc = iou_score(output, labels)
         accu_val_batch.append(acc)
-    epoch_val_losses.append((sum(val_loss_batch))/90)
-    accu_val_epoch.append((sum(accu_val_batch))/90)
-    print(f"Val Epoch Loss: {(sum(val_loss_batch))/90}   Val Epoch Accuracy: {(sum(accu_val_batch))/90}")
-
-def epoch_time(start_time, end_time):
-    elapsed_time = end_time - start_time
-    elapsed_mins = int(elapsed_time / 60)
-    elapsed_secs = int(elapsed_time - (elapsed_mins * 60))
-    return elapsed_mins, elapsed_secs
+    epoch_val_losses.append((sum(val_loss_batch))/len(dataset))
+    accu_val_epoch.append((sum(accu_val_batch))/len(dataset))
+    print(f"Val Epoch Loss: {(sum(val_loss_batch))/len(dataset)}   Val Epoch Accuracy: {(sum(accu_val_batch))/len(dataset)}")

@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from resnet import resnet101, resnet50
+from PSPNet_zoo.resnet import resnet101, resnet50
 
 
 class ConvBlock(nn.Module):

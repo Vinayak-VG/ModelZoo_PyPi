@@ -25,6 +25,7 @@ class DenseBlock(nn.Module):
         self.relu = nn.ReLU()
         self.gn = nn.GroupNorm(16, planes)
         self.dropout = nn.Dropout(0.5)
+
     def forward(self, x):
 
         out = self.conv1(x)

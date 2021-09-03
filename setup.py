@@ -5,9 +5,9 @@ with open("README.md", "r") as fh:
 
 setup(
     name='modelzoo_iitm',
-    version = '0.0.25',
+    version = '0.0.29',
     description = 'Model Zoo by IIT Madras',
-    py_modules = ["modelzoo_iitm", "UNet_zoo.model", "UNet_zoo.train", "UNetPP", "StackGAN", "PointNet", "PSPNet", "Inpainting", "AdapAttnIC", "CharCNN", "resnet"],
+    py_modules = ["modelzoo_iitm", "UNet_zoo.model", "UNet_zoo.train", "UNetPP_zoo.model", "UNetPP_zoo.train", "StackGAN_zoo.model", "StackGAN_zoo.train1", "StackGAN_zoo.train2", "PointNet_zoo.model", "PointNet_zoo.train", "PSPNet_zoo.model", "PSPNet_zoo.train", "PSPNet_zoo.resnet", "Inpainting_zoo.loss", "Inpainting_zoo.model", "Inpainting_zoo.train", "Inpainting_zoo.utilities", "AdapAttnIC_zoo.model", "CharCNN_zoo.model", ],
     package_dir = {'': 'src'},
     classifiers = [
         "Programming Language :: Python :: 3",
@@ -18,6 +18,8 @@ setup(
     ],
     install_requires = [
         "elasticdeform ~= 0.4.9",
+        "sentence-transformers ~= 2.0.0",
+        "PyPrind ~= 2.11.3"
     ],
     extras_require = {
         "dev": [
